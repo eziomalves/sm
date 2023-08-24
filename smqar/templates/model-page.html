@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt" class="h-100">
+  <head>
+      {% include "model-header.html" %}
+  </head>
+  {% block grafico %}
+  {% endblock %}
+  <body>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="p-5 bg-primary text-white text-center rounded">
+          <h3>Sistema de Monitoramento da Qualidade do Ar no Polo Gesseiro do Araripe</h3>
+
+        </div>
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-black bg-light" style="width: 280px;">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-black text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+            <span class="fs-4">Menu</span>
+          </a>
+          <hr>
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a href="/" class="nav-link text-black" aria-current="page">
+                <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a href="busca_data" class="nav-link text-black">
+                <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                Qualidade do Ar
+              </a>
+            </li>
+            <li>
+              <a href="contato" class="nav-link text-black">
+                <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+                Contato
+              </a>
+            </li>
+          </ul>
+          <hr>
+        </div>
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+
+    {% include "model-footer.html" %}
+  </body>
+</html>

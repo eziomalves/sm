@@ -1,0 +1,97 @@
+{% extends "model-page.html"%}
+
+{% block content %}
+<div class="col-sm-9">
+    <div class="mt-5">
+      	<div class="card bg-success text-white text-center">
+		<h4 class="mt-4">Boletim diário de Qualidade do Ar</h4>
+		<p>{{data}}</p> 
+	</div>
+      <table class="table table-bordered table-hover table-striped">
+        <thead class="text-center text-white" style="background-color: DodgerBlue">
+          <tr>
+              <th colspan="2">Índice dos Poluentes Monitorados</th>
+              <th rowspan="2">Classificação</th>
+          </tr>
+          <tr>
+            <th>Material Particulado MP2,5</th>
+            <th>Material Particulado MP10</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for indice in indices %}
+          <tr class="text-center" style="background-color: LightBlue">
+            <td>{{indice.indice_mp25}}</td>
+            <td>{{indice.indice_mp10}}</td>
+            {% if indice.classificacao == 1 %}
+              <td style="background-color:LimeGreen"> Boa </td>
+            {% elif indice.classificacao == 2 %}
+              <td style="background-color:Yellow"> Moderada </td>
+            {% elif indice.classificacao == 3 %}
+              <td style="background-color:Orange"> Ruim </td>
+            {% elif indice.classificacao == 4 %}
+              <td class="text-white" style="background-color:Red"> Muito Ruim </td>
+            {% elif indice.classificacao == 5 %}
+              <td class="text-white" style="background-color:Indigo"> Péssima </td>
+            {% endif %}
+          </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+     <div class="mt-5 mb-0">
+	<div class="card bg-success text-white text-center">
+      	    <h4 class="mt-4">Índice de qualidade do ar e efeitos à saúde humana</h4>
+	</div>
+      <table class="table table-bordered table-hover table-striped ">
+        <thead class="text-center text-white" style="background-color: Blue">
+          <tr>
+            <th>Índice<sup>4</sup></th>
+            <th>Classificação<sup>4</sup></th>
+            <th>Efeitos à Saúde<sup>5</sup></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center"  style="background-color: LimeGreen">0 - 40</td>
+            <td class="text-center"  style="background-color: LimeGreen"> Boa </td>
+            <td>Sem sintomas. Atende às especificações da OMS e Padrões finais do Conama.</td>
+          </tr>
+
+          <tr>
+            <td class="text-center"  style="background-color: Yellow">41 - 80  </td>
+            <td class="text-center"  style="background-color: Yellow"> Moderada </td>
+            <td>Pessoas de grupos sensíveis (crianças, idosos e pessoas com doenças respiratórias e cardíacas)
+                podem apresentar sintomas como tosse seca e cansaço. A população, em geral, não é afetada.</td>
+          </tr>
+        <tr>
+            <td class="text-center" style="background-color: Orange">81 - 120</td>
+            <td class="text-center" style="background-color: Orange"> Ruim </td>
+            <td>Toda a população pode apresentar sintomas como tosse seca, cansaço, ardor nos olhos, nariz e garganta.
+                Pessoas de grupos sensíveis (crianças, idosos e pessoas com doenças respiratórias e cardíacas) podem
+                apresentar efeitos mais sérios na saúde.</td>
+          </tr>
+        <tr  >
+            <td class="text-center text-white" style="background-color: Red; white-space: nowrap">121 - 200</td>
+            <td class="text-center text-white" style="background-color: Red"> Muito Ruim </td>
+            <td>Toda a população pode apresentar agravamento dos sintomas como tosse seca, cansaço, ardor nos olhos,
+                nariz e garganta e ainda falta de ar e respiração ofegante. Efeitos ainda mais graves à saúde de grupos
+                sensíveis (crianças, idosos e pessoas com doenças respiratórias e cardíacas).</td>
+          </tr>
+        <tr  >
+            <td class="text-center text-white" style="background-color: Indigo; white-space: nowrap""> >200  </td>
+            <td class="text-center text-white" style="background-color: Indigo"> Péssima </td>
+            <td>Toda a população pode apresentar sérios riscos de manifestações de doenças respiratórias e
+                cardiovasculares. Aumento de mortes prematuras em pessoas de grupos sensíveis.</td>
+          </tr>
+
+        </tbody>
+      </table>
+         <p><small><sup>4</sup> Faixas de concentração definidas pela Resolução CONAMA nº 491/2018 e no Guia Técnico
+             para o Monitoramento e Avaliação da Qualidade do Ar, do Ministério do Meio Ambiente. <sup>5</sup>
+             Conforme CETESB (2023).</small></p>
+    </div>
+</div>
+{% endblock %}
